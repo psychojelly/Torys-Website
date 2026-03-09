@@ -15,7 +15,9 @@
       "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"layout responsive animation scroll\" --stack html-tailwind)",
       "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"animation scroll entrance parallax\" --domain ux -n 5)",
       "Bash(npx --yes live-server --version)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(gh api repos/psychojelly/Torys-Website/pages -X GET)",
+      "Bash(where gh)"
     ]
   }
 }
