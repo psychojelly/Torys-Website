@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tory Haywood — Fitness Creator & Brand Partner</title>
+  <meta name="description" content="Tory Haywood — Fitness content creator inspiring transformation through faith, discipline, and community. Available for brand partnerships, UGC, and event appearances." />
+
+  <!-- Fonts: Barlow Condensed + Barlow (Athletic/Fitness pairing) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['Barlow', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              orange: '#F97316',
+              'orange-light': '#FB923C',
+              green: '#22C55E',
+              dark: '#0A0A0A',
+              'dark-card': '#141414',
+              'dark-surface': '#1A1A1A',
+              muted: '#A3A3A3',
+              light: '#FAFAFA',
+            }
+          },
+          keyframes: {
+            'fade-up': {
+              '0%': { opacity: '0', transform: 'translateY(40px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            'fade-in': {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            'slide-right': {
+              '0%': { opacity: '0', transform: 'translateX(-40px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            'slide-left': {
+              '0%': { opacity: '0', transform: 'translateX(40px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            'scale-in': {
+              '0%': { opacity: '0', transform: 'scale(0.9)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+            'count-pulse': {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.05)' },
+            },
+          },
+          animation: {
+            'fade-up': 'fade-up 0.7s ease-out forwards',
+            'fade-in': 'fade-in 0.7s ease-out forwards',
+            'slide-right': 'slide-right 0.7s ease-out forwards',
+            'slide-left': 'slide-left 0.7s ease-out forwards',
+            'scale-in': 'scale-in 0.5s ease-out forwards',
+            'count-pulse': 'count-pulse 0.4s ease-out',
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Hero keyframes (must be in CSS, not just Tailwind config, for inline style usage) */
+    @keyframes fade-up {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Base resets */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: #0A0A0A;
+      color: #FAFAFA;
+      overflow-x: hidden;
+    }
+
+    /* Scroll-triggered animation base */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal-scale.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stagger children */
+    .stagger-children .reveal { transition-delay: calc(var(--i, 0) * 0.12s); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-left, .reveal-right, .reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .hero-title, .hero-sub, .hero-cta { animation: none !important; opacity: 1 !important; }
+    }
+
+    /* Hero gradient overlay */
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.3) 0%,
+        rgba(10, 10, 10, 0.1) 30%,
+        rgba(10, 10, 10, 0.6) 70%,
+        rgba(10, 10, 10, 1) 100%
+      );
+    }
+
+    /* Stat counter animation */
+    .stat-number {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Service card glow on hover */
+    .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.15);
+      border-color: rgba(249, 115, 22, 0.4);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+    /* Navbar blur */
+    .nav-blur {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Image placeholder gradient */
+    .img-placeholder {
+      background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 50%, #1A1A1A 100%);
+      background-size: 200% 200%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .img-placeholder { animation: none; }
+    }
+
+    /* Orange accent line */
+    .accent-line {
+      width: 48px;
+      height: 4px;
+      background: #F97316;
+      border-radius: 2px;
+    }
+
+    /* Progress bar for case study cards */
+    .progress-bar {
+      background: linear-gradient(90deg, #F97316, #22C55E);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo / Name -->
+        <a href="#hero" class="font-display font-800 text-xl md:text-2xl tracking-wider uppercase cursor-pointer text-white hover:text-brand-orange transition-colors duration-200">
+          Tory Haywood
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="font-display font-600 text-sm uppercase tracking-widest text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">About</a>
+          <a href="#stats" class="font-display font-600 text-sm uppercase tracking-widest text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">Stats</a>
+          <a href="#services" class="font-display font-600 text-sm uppercase tracking-widest text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">Services</a>
+          <a href="#work" class="font-display font-600 text-sm uppercase tracking-widest text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">Work</a>
+          <a href="#contact" class="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-light text-white font-display font-700 text-sm uppercase tracking-wider px-6 py-2.5 rounded-full transition-colors duration-200 cursor-pointer">
+            Let's Work Together
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 cursor-pointer p-2" aria-label="Toggle navigation menu">
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar1"></span>
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span>
+          <span class="block w-4 h-0.5 bg-white transition-all duration-300" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-brand-dark/95 nav-blur">
+      <div class="flex flex-col items-center gap-6 py-8 px-4">
+        <a href="#about" class="mobile-link font-display font-600 text-lg uppercase tracking-widest text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">About</a>
+        <a href="#stats" class="mobile-link font-display font-600 text-lg uppercase tracking-widest text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">Stats</a>
+        <a href="#services" class="mobile-link font-display font-600 text-lg uppercase tracking-widest text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">Services</a>
+        <a href="#work" class="mobile-link font-display font-600 text-lg uppercase tracking-widest text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">Work</a>
+        <a href="#contact" class="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-light text-white font-display font-700 text-base uppercase tracking-wider px-8 py-3 rounded-full transition-colors duration-200 cursor-pointer">
+          Let's Work Together
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="relative min-h-screen flex items-end pb-16 md:pb-24 overflow-hidden">
+    <!-- Background Image Placeholder -->
+    <div class="absolute inset-0 img-placeholder">
+      <!-- Replace with: <img src="assets/hero.jpg" alt="Tory Haywood" class="w-full h-full object-cover object-top" /> -->
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-brand-muted/40">
+          <svg class="w-16 h-16 mx-auto mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+          </svg>
+          <p class="text-sm font-display uppercase tracking-widest">Hero Photo</p>
+          <p class="text-xs mt-1 opacity-60">Replace with full-bleed image of Tory</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gradient Overlay -->
+    <div class="hero-overlay absolute inset-0"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="max-w-3xl">
+        <p class="hero-sub font-display font-500 text-brand-orange text-base md:text-lg uppercase tracking-[0.3em] mb-4 opacity-0" style="animation: fade-up 0.7s 0.3s ease-out forwards;">
+          Fitness Creator &bull; Brand Partner &bull; Motivator
+        </p>
+
+        <h1 class="hero-title font-display font-900 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl uppercase leading-[0.9] tracking-tight mb-6 opacity-0" style="animation: fade-up 0.7s 0.1s ease-out forwards;">
+          Tory<br/>Haywood
+        </h1>
+
+        <p class="hero-sub font-body font-300 text-lg md:text-xl text-brand-muted max-w-xl mb-8 opacity-0" style="animation: fade-up 0.7s 0.5s ease-out forwards;">
+          Inspiring millions to embrace self-growth, health, and adventure. Authentic storytelling that moves people and moves product.
+        </p>
+
+        <div class="hero-cta flex flex-wrap gap-4 opacity-0" style="animation: fade-up 0.7s 0.7s ease-out forwards;">
+          <a href="#contact" class="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-light text-white font-display font-700 text-base uppercase tracking-wider px-8 py-3.5 rounded-full transition-colors duration-200 cursor-pointer">
+            Partner With Me
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+          <a href="#about" class="inline-flex items-center gap-2 border border-white/20 hover:border-white/50 text-white font-display font-600 text-base uppercase tracking-wider px-8 py-3.5 rounded-full transition-colors duration-200 cursor-pointer">
+            My Story
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 opacity-0" style="animation: fade-in 1s 1.5s ease-out forwards;">
+      <div class="flex flex-col items-center gap-2 text-brand-muted/50">
+        <span class="font-display text-[10px] uppercase tracking-[0.4em]">Scroll</span>
+        <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Image Column -->
+        <div class="reveal-left order-2 lg:order-1">
+          <div class="relative">
+            <div class="aspect-[3/4] rounded-2xl overflow-hidden img-placeholder">
+              <!-- Replace with: <img src="assets/about.jpg" alt="Tory Haywood transformation" class="w-full h-full object-cover" /> -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-brand-muted/40">
+                  <svg class="w-12 h-12 mx-auto mb-2 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+                  </svg>
+                  <p class="text-xs font-display uppercase tracking-widest">About Photo</p>
+                </div>
+              </div>
+            </div>
+            <!-- Accent element -->
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-brand-orange/30 rounded-2xl -z-10"></div>
+          </div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="order-1 lg:order-2">
+          <div class="reveal">
+            <p class="font-display font-600 text-brand-orange text-sm uppercase tracking-[0.3em] mb-4">My Story</p>
+            <h2 class="font-display font-800 text-4xl md:text-5xl lg:text-6xl uppercase leading-[0.95] mb-6">
+              From Rock<br/>Bottom To<br/>
+              <span class="text-brand-orange">Unstoppable</span>
+            </h2>
+          </div>
+
+          <div class="reveal" style="transition-delay: 0.15s;">
+            <div class="accent-line mb-6"></div>
+            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed mb-5">
+              After battling obesity and surviving one of the lowest moments of my life, I made the decision to change everything. I started running, returned to the gym, built healthier routines, and surrounded myself with better influences.
+            </p>
+            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed mb-5">
+              Through discipline, faith, and consistency, I lost <span class="text-white font-600">45 pounds in nine months</span> and found a stronger, happier version of myself than I had ever experienced before.
+            </p>
+            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed">
+              Today, my content inspires people to live an adventurous, healthy, faith-driven, and purposeful life while embracing who they truly are without hesitation.
+            </p>
+          </div>
+
+          <!-- Values Pills -->
+          <div class="reveal flex flex-wrap gap-3 mt-8" style="transition-delay: 0.3s;">
+            <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 font-display font-500 text-sm uppercase tracking-wider text-brand-muted">Self Growth</span>
+            <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 font-display font-500 text-sm uppercase tracking-wider text-brand-muted">Health</span>
+            <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 font-display font-500 text-sm uppercase tracking-wider text-brand-muted">Community</span>
+            <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 font-display font-500 text-sm uppercase tracking-wider text-brand-muted">Travel</span>
+            <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 font-display font-500 text-sm uppercase tracking-wider text-brand-muted">Faith</span>
+            <span class="px-4 py-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 font-display font-500 text-sm uppercase tracking-wider text-brand-orange">High Energy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== STATS ===== -->
+  <section id="stats" class="py-20 md:py-28 relative overflow-hidden">
+    <!-- Background accent -->
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-dark-surface to-brand-dark"></div>
+    <!-- Diagonal line accent -->
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <p class="font-display font-600 text-brand-orange text-sm uppercase tracking-[0.3em] mb-4">The Numbers</p>
+        <h2 class="font-display font-800 text-4xl md:text-5xl lg:text-6xl uppercase leading-[0.95]">
+          Reach That <span class="text-brand-orange">Moves</span>
+        </h2>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 stagger-children">
+        <!-- Stat 1 -->
+        <div class="reveal text-center p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.02]" style="--i:0">
+          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-target="22.7" data-suffix="M">0</p>
+          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2">Total Views</p>
+          <p class="text-xs text-brand-orange mt-1 font-500">Instagram</p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="reveal text-center p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.02]" style="--i:1">
+          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-target="3.4" data-suffix="M">0</p>
+          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2">Engagements</p>
+          <p class="text-xs text-brand-orange mt-1 font-500">Instagram</p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="reveal text-center p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.02]" style="--i:2">
+          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-target="18" data-suffix="K+" data-decimals="0">0</p>
+          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2">Followers</p>
+          <p class="text-xs text-brand-orange mt-1 font-500">Combined</p>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="reveal text-center p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.02]" style="--i:3">
+          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-target="895" data-suffix="K" data-decimals="0">0</p>
+          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2">Views</p>
+          <p class="text-xs text-brand-orange mt-1 font-500">TikTok</p>
+        </div>
+      </div>
+
+      <!-- Platform Breakdown -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <!-- Instagram -->
+        <div class="reveal p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center gap-5" style="--i:4">
+          <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center">
+            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-700 text-lg uppercase tracking-wider">Instagram</p>
+            <p class="text-brand-muted text-sm">13.4K Followers &bull; 22.7M Views &bull; 3.4M Engagements</p>
+          </div>
+        </div>
+
+        <!-- TikTok -->
+        <div class="reveal p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center gap-5" style="--i:5">
+          <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-black border border-white/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.05a8.27 8.27 0 004.76 1.51V7.12a4.83 4.83 0 01-1-.43z"/></svg>
+          </div>
+          <div>
+            <p class="font-display font-700 text-lg uppercase tracking-wider">TikTok</p>
+            <p class="text-brand-muted text-sm">4.6K Followers &bull; 895K Views &bull; 129K Engagements</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <p class="font-display font-600 text-brand-orange text-sm uppercase tracking-[0.3em] mb-4">What I Offer</p>
+        <h2 class="font-display font-800 text-4xl md:text-5xl lg:text-6xl uppercase leading-[0.95]">
+          Let's Create <span class="text-brand-orange">Together</span>
+        </h2>
+        <p class="font-body font-400 text-brand-muted text-base md:text-lg max-w-2xl mx-auto mt-5">
+          Authentic content that inspires discovery, builds trust, and drives meaningful engagement across diverse industries.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+        <!-- Service 1 -->
+        <div class="service-card reveal p-8 rounded-2xl border border-white/5 bg-brand-dark-card cursor-pointer" style="--i:0">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Reels</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed">High-energy short-form video content for Instagram Reels and TikTok that captures attention and drives engagement.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card reveal p-8 rounded-2xl border border-white/5 bg-brand-dark-card cursor-pointer" style="--i:1">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Story Telling</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed">Authentic narrative content that connects your brand with real experiences — turning products into personal transformation stories.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card reveal p-8 rounded-2xl border border-white/5 bg-brand-dark-card cursor-pointer" style="--i:2">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">UGC Collab</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed">User-generated content that feels native to the platform. Real, relatable, and designed to build trust with your audience.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card reveal p-8 rounded-2xl border border-white/5 bg-brand-dark-card cursor-pointer" style="--i:3">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Event Appearance</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed">Bring the energy in person. Fitness events, brand activations, community meetups, and live content creation.</p>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card reveal p-8 rounded-2xl border border-white/5 bg-brand-dark-card cursor-pointer" style="--i:4">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Insta Stories</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed">Day-in-the-life stories, product reviews, and behind-the-scenes content that creates intimate brand connection.</p>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card reveal p-8 rounded-2xl border border-white/5 bg-brand-dark-card cursor-pointer" style="--i:5">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Brand Partnerships</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed">Long-term collaborations with brands whose values align. Authentic integration that resonates, not just promotes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== CASE STUDIES / WORK ===== -->
+  <section id="work" class="py-20 md:py-32 bg-brand-dark-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <p class="font-display font-600 text-brand-orange text-sm uppercase tracking-[0.3em] mb-4">Brand Work</p>
+        <h2 class="font-display font-800 text-4xl md:text-5xl lg:text-6xl uppercase leading-[0.95]">
+          Case <span class="text-brand-orange">Studies</span>
+        </h2>
+        <p class="font-body font-400 text-brand-muted text-base md:text-lg max-w-2xl mx-auto mt-5">
+          Real partnerships, real results. Here's how I've helped brands connect with their audience.
+        </p>
+      </div>
+
+      <!-- Case Study 1: Humble Estate -->
+      <div class="reveal mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-0 rounded-2xl overflow-hidden border border-white/5 bg-brand-dark-card">
+          <!-- Image -->
+          <div class="lg:col-span-2 aspect-video lg:aspect-auto img-placeholder relative">
+            <!-- Replace with: <img src="assets/humble-estate.jpg" alt="Humble Estate partnership" class="w-full h-full object-cover" /> -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center text-brand-muted/40">
+                <svg class="w-10 h-10 mx-auto mb-2 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M2.25 18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V6a2.25 2.25 0 0 0-2.25-2.25h-15A2.25 2.25 0 0 0 2.25 6v12Z" />
+                </svg>
+                <p class="text-xs font-display uppercase tracking-widest">Campaign Photo</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div class="lg:col-span-3 p-8 md:p-10 flex flex-col justify-center">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green font-display font-600 text-xs uppercase tracking-wider">Featured</span>
+              <span class="px-3 py-1 rounded-full bg-white/5 text-brand-muted font-display font-500 text-xs uppercase tracking-wider">Partnership</span>
+            </div>
+            <h3 class="font-display font-800 text-2xl md:text-3xl uppercase tracking-wide mb-3">Humble Estate</h3>
+            <p class="font-body text-brand-muted text-sm md:text-base leading-relaxed mb-6">
+              Authentic lifestyle integration showcasing how Humble Estate fits into the journey of self-improvement. Content focused on real daily routines, creating organic connection between brand values and audience aspirations.
+            </p>
+
+            <!-- Metrics Row -->
+            <div class="grid grid-cols-3 gap-4">
+              <div class="text-center p-3 rounded-xl bg-white/[0.03]">
+                <p class="font-display font-800 text-xl md:text-2xl text-brand-orange">150K+</p>
+                <p class="font-display text-xs uppercase tracking-wider text-brand-muted mt-1">Reach</p>
+              </div>
+              <div class="text-center p-3 rounded-xl bg-white/[0.03]">
+                <p class="font-display font-800 text-xl md:text-2xl text-brand-orange">8.2%</p>
+                <p class="font-display text-xs uppercase tracking-wider text-brand-muted mt-1">Engagement</p>
+              </div>
+              <div class="text-center p-3 rounded-xl bg-white/[0.03]">
+                <p class="font-display font-800 text-xl md:text-2xl text-brand-orange">3x</p>
+                <p class="font-display text-xs uppercase tracking-wider text-brand-muted mt-1">ROI</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder Case Studies -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Case Study 2 -->
+        <div class="reveal rounded-2xl border border-white/5 bg-brand-dark-card overflow-hidden cursor-pointer service-card" style="--i:0">
+          <div class="aspect-video img-placeholder relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center text-brand-muted/30">
+                <svg class="w-8 h-8 mx-auto mb-2 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                <p class="text-xs font-display uppercase tracking-widest">Next Campaign</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="px-3 py-1 rounded-full bg-brand-orange/10 text-brand-orange font-display font-600 text-xs uppercase tracking-wider">Coming Soon</span>
+            <h3 class="font-display font-700 text-lg uppercase tracking-wider mt-3 mb-2">Your Brand Here</h3>
+            <p class="font-body text-brand-muted text-sm leading-relaxed">Ready to create something amazing together? Let's build a campaign that resonates with your target audience.</p>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="reveal rounded-2xl border border-white/5 bg-brand-dark-card overflow-hidden cursor-pointer service-card" style="--i:1">
+          <div class="aspect-video img-placeholder relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center text-brand-muted/30">
+                <svg class="w-8 h-8 mx-auto mb-2 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                <p class="text-xs font-display uppercase tracking-widest">Next Campaign</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="px-3 py-1 rounded-full bg-brand-orange/10 text-brand-orange font-display font-600 text-xs uppercase tracking-wider">Coming Soon</span>
+            <h3 class="font-display font-700 text-lg uppercase tracking-wider mt-3 mb-2">Your Brand Here</h3>
+            <p class="font-body text-brand-muted text-sm leading-relaxed">Whether it's fitness, lifestyle, travel, or wellness — let's tell a story your audience will remember.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== AUDIENCE ===== -->
+  <section id="audience" class="py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Text -->
+        <div>
+          <div class="reveal">
+            <p class="font-display font-600 text-brand-orange text-sm uppercase tracking-[0.3em] mb-4">Audience</p>
+            <h2 class="font-display font-800 text-4xl md:text-5xl lg:text-6xl uppercase leading-[0.95] mb-6">
+              Who's <span class="text-brand-orange">Watching</span>
+            </h2>
+            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed max-w-lg">
+              A highly engaged, health-conscious community of young adults ready to discover brands that align with their values.
+            </p>
+          </div>
+        </div>
+
+        <!-- Demographics -->
+        <div class="space-y-6">
+          <!-- Age -->
+          <div class="reveal p-6 rounded-2xl border border-white/5 bg-brand-dark-card" style="--i:0">
+            <div class="flex items-center justify-between mb-3">
+              <p class="font-display font-700 text-sm uppercase tracking-wider">Core Age Group</p>
+              <span class="font-display font-800 text-2xl text-brand-orange">25–34</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+              <div class="h-full rounded-full progress-bar" style="width: 72%"></div>
+            </div>
+          </div>
+
+          <!-- Gender -->
+          <div class="reveal p-6 rounded-2xl border border-white/5 bg-brand-dark-card" style="--i:1">
+            <p class="font-display font-700 text-sm uppercase tracking-wider mb-4">Gender Split</p>
+            <div class="flex gap-4">
+              <div class="flex-1 text-center p-4 rounded-xl bg-white/[0.03]">
+                <p class="font-display font-800 text-3xl text-white">51.5%</p>
+                <p class="font-display text-xs uppercase tracking-wider text-brand-muted mt-1">Women</p>
+              </div>
+              <div class="flex-1 text-center p-4 rounded-xl bg-white/[0.03]">
+                <p class="font-display font-800 text-3xl text-white">48.8%</p>
+                <p class="font-display text-xs uppercase tracking-wider text-brand-muted mt-1">Men</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="reveal p-6 rounded-2xl border border-white/5 bg-brand-dark-card" style="--i:2">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-display font-700 text-sm uppercase tracking-wider">Primary Market</p>
+                <p class="text-brand-muted text-sm mt-1">Health & fitness-conscious audience based in</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="font-display font-800 text-2xl text-brand-orange">USA</span>
+                <svg class="w-6 h-6 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interests -->
+          <div class="reveal p-6 rounded-2xl border border-white/5 bg-brand-dark-card" style="--i:3">
+            <p class="font-display font-700 text-sm uppercase tracking-wider mb-4">Audience Interests</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-full bg-brand-orange/10 text-brand-orange font-display font-500 text-xs uppercase tracking-wider">Fitness</span>
+              <span class="px-3 py-1.5 rounded-full bg-brand-green/10 text-brand-green font-display font-500 text-xs uppercase tracking-wider">Health</span>
+              <span class="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-400 font-display font-500 text-xs uppercase tracking-wider">Self Growth</span>
+              <span class="px-3 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 font-display font-500 text-xs uppercase tracking-wider">Travel</span>
+              <span class="px-3 py-1.5 rounded-full bg-pink-500/10 text-pink-400 font-display font-500 text-xs uppercase tracking-wider">Lifestyle</span>
+              <span class="px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-400 font-display font-500 text-xs uppercase tracking-wider">Faith</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== CTA / CONTACT ===== -->
+  <section id="contact" class="py-20 md:py-32 relative overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-brand-orange/5 blur-[120px] pointer-events-none"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="reveal">
+        <p class="font-display font-600 text-brand-orange text-sm uppercase tracking-[0.3em] mb-4">Let's Connect</p>
+        <h2 class="font-display font-900 text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase leading-[0.9] mb-6">
+          Let's Grow<br/><span class="text-brand-orange">Together</span>
+        </h2>
+        <p class="font-body font-400 text-brand-muted text-lg md:text-xl max-w-2xl mx-auto mb-10">
+          My goal is to collaborate with brands whose values align with my audience's interests, creating authentic content that inspires discovery and drives meaningful engagement.
+        </p>
+      </div>
+
+      <div class="reveal" style="transition-delay: 0.2s;">
+        <!-- Email CTA -->
+        <a href="mailto:Tory.l.haywood@gmail.com" class="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange-light text-white font-display font-700 text-lg uppercase tracking-wider px-10 py-4 rounded-full transition-colors duration-200 cursor-pointer mb-6">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+          </svg>
+          Get In Touch
+        </a>
+
+        <p class="font-body text-brand-muted text-sm mb-8">Tory.l.haywood@gmail.com &bull; (737) 703-4414</p>
+
+        <!-- Social Links -->
+        <div class="flex items-center justify-center gap-4">
+          <a href="https://instagram.com/Tory.l.haywood" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-brand-orange/20 hover:border-brand-orange/40 flex items-center justify-center transition-all duration-200 cursor-pointer" aria-label="Instagram">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://tiktok.com/@Tory.haywood" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-white/10 bg-white/5 hover:bg-brand-orange/20 hover:border-brand-orange/40 flex items-center justify-center transition-all duration-200 cursor-pointer" aria-label="TikTok">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.05a8.27 8.27 0 004.76 1.51V7.12a4.83 4.83 0 01-1-.43z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="py-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="#hero" class="font-display font-800 text-base uppercase tracking-wider text-brand-muted hover:text-white transition-colors duration-200 cursor-pointer">
+          Tory Haywood
+        </a>
+        <p class="font-body text-brand-muted text-xs tracking-wider">
+          &copy; 2025 Tory Haywood. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // ---- Scroll Reveal (Intersection Observer) ----
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+
+    // ---- Navbar Background on Scroll ----
+    const navbar = document.getElementById('navbar');
+    let lastScrollY = 0;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY > 80) {
+        navbar.classList.add('bg-brand-dark/90', 'nav-blur', 'shadow-lg', 'shadow-black/10');
+      } else {
+        navbar.classList.remove('bg-brand-dark/90', 'nav-blur', 'shadow-lg', 'shadow-black/10');
+      }
+
+      lastScrollY = scrollY;
+    }, { passive: true });
+
+
+    // ---- Mobile Menu Toggle ----
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+
+      if (menuOpen) {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        bar1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'rotate(-45deg) translate(4px, -4px)';
+        bar3.style.width = '24px';
+      } else {
+        mobileMenu.style.maxHeight = '0';
+        bar1.style.transform = '';
+        bar2.style.opacity = '1';
+        bar3.style.transform = '';
+        bar3.style.width = '16px';
+      }
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.style.maxHeight = '0';
+        bar1.style.transform = '';
+        bar2.style.opacity = '1';
+        bar3.style.transform = '';
+        bar3.style.width = '16px';
+      });
+    });
+
+
+    // ---- Animated Stat Counters ----
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const countUp = (el) => {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const decimals = parseInt(el.dataset.decimals ?? '1');
+      const duration = 2000;
+      const startTime = performance.now();
+
+      if (prefersReducedMotion) {
+        el.textContent = (decimals === 0 ? target.toFixed(0) : target.toFixed(decimals)) + suffix;
+        return;
+      }
+
+      const animate = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+
+        el.textContent = (decimals === 0 ? Math.round(current).toLocaleString() : current.toFixed(decimals)) + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          el.textContent = (decimals === 0 ? target.toFixed(0) : target.toFixed(decimals)) + suffix;
+        }
+      };
+
+      requestAnimationFrame(animate);
+    };
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          countUp(entry.target);
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+      statObserver.observe(el);
+    });
+
+
+    // ---- Smooth Scroll for Anchor Links ----
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

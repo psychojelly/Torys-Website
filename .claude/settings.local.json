@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"test\" --domain style -n 2)",
+      "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"fitness influencer personal brand portfolio energy community\" --design-system -p \"Fitness Influencer\")",
+      "Bash(pip install pymupdf)",
+      "Bash(python3 -c \":*)",
+      "Bash(pip install pymupdf --force-reinstall --no-cache-dir)",
+      "Bash(python3 -c \"import sys; print\\(sys.executable\\); print\\(sys.version\\)\")",
+      "Bash(python3 -m pip install pymupdf)",
+      "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"bold energetic fitness lifestyle\" --domain style -n 5)",
+      "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"influencer portfolio personal brand\" --domain landing -n 5)",
+      "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"energetic bold athletic sport\" --domain typography -n 5)",
+      "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"fitness health lifestyle energy\" --domain color -n 5)",
+      "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"layout responsive animation scroll\" --stack html-tailwind)",
+      "Bash(python3 \"C:/Users/User/.claude/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"animation scroll entrance parallax\" --domain ux -n 5)",
+      "Bash(npx --yes live-server --version)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}
