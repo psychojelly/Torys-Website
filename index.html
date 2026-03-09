@@ -144,6 +144,14 @@
       .hero-title, .hero-sub, .hero-cta { animation: none !important; opacity: 1 !important; }
     }
 
+    /* Hero image orange body outline glow */
+    .hero-img {
+      filter:
+        drop-shadow(0 0 8px rgba(249, 115, 22, 0.9))
+        drop-shadow(0 0 20px rgba(249, 115, 22, 0.6))
+        drop-shadow(0 0 50px rgba(249, 115, 22, 0.3));
+    }
+
     /* Hero gradient overlay */
     .hero-overlay {
       background: linear-gradient(
@@ -259,8 +267,8 @@
   <!-- ===== HERO ===== -->
   <section id="hero" class="relative min-h-screen flex items-end pb-16 md:pb-24 overflow-hidden">
     <!-- Background Image -->
-    <div class="absolute inset-0">
-      <img src="assets/page2_img1_1033x1549.png" alt="Tory Haywood in athletic pose" class="w-full h-full object-cover object-top" />
+    <div class="absolute inset-0 bg-brand-dark">
+      <img src="assets/hero_new.png" data-cms-src="hero.image" alt="Tory Haywood in athletic pose" class="w-full h-full object-contain object-bottom hero-img" style="object-position: center bottom;" />
     </div>
 
     <!-- Gradient Overlay -->
@@ -269,7 +277,7 @@
     <!-- Hero Content -->
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div class="max-w-3xl">
-        <p class="hero-sub font-display font-500 text-brand-orange text-base md:text-lg uppercase tracking-[0.3em] mb-4 opacity-0" style="animation: fade-up 0.7s 0.3s ease-out forwards;">
+        <p class="hero-sub font-display font-500 text-brand-orange text-base md:text-lg uppercase tracking-[0.3em] mb-4 opacity-0" data-cms="hero.tagline" style="animation: fade-up 0.7s 0.3s ease-out forwards;">
           Fitness Creator &bull; Brand Partner &bull; Motivator
         </p>
 
@@ -277,7 +285,7 @@
           Tory<br/>Haywood
         </h1>
 
-        <p class="hero-sub font-body font-300 text-lg md:text-xl text-brand-muted max-w-xl mb-8 opacity-0" style="animation: fade-up 0.7s 0.5s ease-out forwards;">
+        <p class="hero-sub font-body font-300 text-lg md:text-xl text-brand-muted max-w-xl mb-8 opacity-0" data-cms="hero.description" style="animation: fade-up 0.7s 0.5s ease-out forwards;">
           Inspiring millions to embrace self-growth, health, and adventure. Authentic storytelling that moves people and moves product.
         </p>
 
@@ -314,7 +322,7 @@
         <div class="reveal-left order-2 lg:order-1">
           <div class="relative">
             <div class="aspect-[3/4] rounded-2xl overflow-hidden">
-              <img src="assets/page1_img2_1033x1549.png" alt="Tory Haywood portrait" class="w-full h-full object-cover" />
+              <img src="assets/page1_img2_1033x1549.png" data-cms-src="about.image" alt="Tory Haywood portrait" class="w-full h-full object-cover" />
             </div>
             <!-- Accent element -->
             <div class="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-brand-orange/30 rounded-2xl -z-10"></div>
@@ -324,7 +332,7 @@
         <!-- Text Column -->
         <div class="order-1 lg:order-2">
           <div class="reveal">
-            <p class="font-display font-600 text-brand-orange text-sm uppercase tracking-[0.3em] mb-4">My Story</p>
+            <p class="font-display font-600 text-brand-orange text-sm uppercase tracking-[0.3em] mb-4" data-cms="about.eyebrow">My Story</p>
             <h2 class="font-display font-800 text-4xl md:text-5xl lg:text-6xl uppercase leading-[0.95] mb-6">
               From Rock<br/>Bottom To<br/>
               <span class="text-brand-orange">Unstoppable</span>
@@ -333,13 +341,13 @@
 
           <div class="reveal" style="transition-delay: 0.15s;">
             <div class="accent-line mb-6"></div>
-            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed mb-5">
+            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed mb-5" data-cms="about.paragraph_1">
               After battling obesity and surviving one of the lowest moments of my life, I made the decision to change everything. I started running, returned to the gym, built healthier routines, and surrounded myself with better influences.
             </p>
-            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed mb-5">
-              Through discipline, faith, and consistency, I lost <span class="text-white font-600">45 pounds in nine months</span> and found a stronger, happier version of myself than I had ever experienced before.
+            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed mb-5" data-cms="about.paragraph_2">
+              Through discipline, faith, and consistency, I lost 45 pounds in nine months and found a stronger, happier version of myself than I had ever experienced before.
             </p>
-            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed">
+            <p class="font-body font-400 text-brand-muted text-base md:text-lg leading-relaxed" data-cms="about.paragraph_3">
               Today, my content inspires people to live an adventurous, healthy, faith-driven, and purposeful life while embracing who they truly are without hesitation.
             </p>
           </div>
@@ -379,30 +387,30 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 stagger-children">
         <!-- Stat 1 -->
         <div class="reveal text-center p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.02]" style="--i:0">
-          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-target="22.7" data-suffix="M">0</p>
-          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2">Total Views</p>
-          <p class="text-xs text-brand-orange mt-1 font-500">Instagram</p>
+          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-cms-stat="stat_1" data-target="22.7" data-suffix="M">0</p>
+          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2" data-cms="stat_1.label">Total Views</p>
+          <p class="text-xs text-brand-orange mt-1 font-500" data-cms="stat_1.platform">Instagram</p>
         </div>
 
         <!-- Stat 2 -->
         <div class="reveal text-center p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.02]" style="--i:1">
-          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-target="3.4" data-suffix="M">0</p>
-          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2">Engagements</p>
-          <p class="text-xs text-brand-orange mt-1 font-500">Instagram</p>
+          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-cms-stat="stat_2" data-target="3.4" data-suffix="M">0</p>
+          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2" data-cms="stat_2.label">Engagements</p>
+          <p class="text-xs text-brand-orange mt-1 font-500" data-cms="stat_2.platform">Instagram</p>
         </div>
 
         <!-- Stat 3 -->
         <div class="reveal text-center p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.02]" style="--i:2">
-          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-target="18" data-suffix="K+" data-decimals="0">0</p>
-          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2">Followers</p>
-          <p class="text-xs text-brand-orange mt-1 font-500">Combined</p>
+          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-cms-stat="stat_3" data-target="18" data-suffix="K+" data-decimals="0">0</p>
+          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2" data-cms="stat_3.label">Followers</p>
+          <p class="text-xs text-brand-orange mt-1 font-500" data-cms="stat_3.platform">Combined</p>
         </div>
 
         <!-- Stat 4 -->
         <div class="reveal text-center p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.02]" style="--i:3">
-          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-target="895" data-suffix="K" data-decimals="0">0</p>
-          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2">Views</p>
-          <p class="text-xs text-brand-orange mt-1 font-500">TikTok</p>
+          <p class="stat-number font-display font-900 text-4xl md:text-5xl lg:text-6xl text-white" data-cms-stat="stat_4" data-target="895" data-suffix="K" data-decimals="0">0</p>
+          <p class="font-display font-500 text-sm uppercase tracking-[0.2em] text-brand-muted mt-2" data-cms="stat_4.label">Views</p>
+          <p class="text-xs text-brand-orange mt-1 font-500" data-cms="stat_4.platform">TikTok</p>
         </div>
       </div>
 
@@ -455,8 +463,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
             </svg>
           </div>
-          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Reels</h3>
-          <p class="font-body text-brand-muted text-sm leading-relaxed">High-energy short-form video content for Instagram Reels and TikTok that captures attention and drives engagement.</p>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3" data-cms="service_1.title">Reels</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed" data-cms="service_1.description">High-energy short-form video content for Instagram Reels and TikTok that captures attention and drives engagement.</p>
         </div>
 
         <!-- Service 2 -->
@@ -466,8 +474,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
             </svg>
           </div>
-          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Story Telling</h3>
-          <p class="font-body text-brand-muted text-sm leading-relaxed">Authentic narrative content that connects your brand with real experiences — turning products into personal transformation stories.</p>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3" data-cms="service_2.title">Story Telling</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed" data-cms="service_2.description">Authentic narrative content that connects your brand with real experiences — turning products into personal transformation stories.</p>
         </div>
 
         <!-- Service 3 -->
@@ -477,8 +485,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
             </svg>
           </div>
-          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">UGC Collab</h3>
-          <p class="font-body text-brand-muted text-sm leading-relaxed">User-generated content that feels native to the platform. Real, relatable, and designed to build trust with your audience.</p>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3" data-cms="service_3.title">UGC Collab</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed" data-cms="service_3.description">User-generated content that feels native to the platform. Real, relatable, and designed to build trust with your audience.</p>
         </div>
 
         <!-- Service 4 -->
@@ -488,8 +496,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
             </svg>
           </div>
-          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Event Appearance</h3>
-          <p class="font-body text-brand-muted text-sm leading-relaxed">Bring the energy in person. Fitness events, brand activations, community meetups, and live content creation.</p>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3" data-cms="service_4.title">Event Appearance</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed" data-cms="service_4.description">Bring the energy in person. Fitness events, brand activations, community meetups, and live content creation.</p>
         </div>
 
         <!-- Service 5 -->
@@ -499,8 +507,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
             </svg>
           </div>
-          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Insta Stories</h3>
-          <p class="font-body text-brand-muted text-sm leading-relaxed">Day-in-the-life stories, product reviews, and behind-the-scenes content that creates intimate brand connection.</p>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3" data-cms="service_5.title">Insta Stories</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed" data-cms="service_5.description">Day-in-the-life stories, product reviews, and behind-the-scenes content that creates intimate brand connection.</p>
         </div>
 
         <!-- Service 6 -->
@@ -510,8 +518,8 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
             </svg>
           </div>
-          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3">Brand Partnerships</h3>
-          <p class="font-body text-brand-muted text-sm leading-relaxed">Long-term collaborations with brands whose values align. Authentic integration that resonates, not just promotes.</p>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wider mb-3" data-cms="service_6.title">Brand Partnerships</h3>
+          <p class="font-body text-brand-muted text-sm leading-relaxed" data-cms="service_6.description">Long-term collaborations with brands whose values align. Authentic integration that resonates, not just promotes.</p>
         </div>
       </div>
     </div>
@@ -536,7 +544,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-0 rounded-2xl overflow-hidden border border-white/5 bg-brand-dark-card">
           <!-- Image -->
           <div class="lg:col-span-2 aspect-video lg:aspect-auto relative overflow-hidden">
-            <img src="assets/page4_img2_820x1236.png" alt="Tory Haywood with community" class="w-full h-full object-cover object-top" />
+            <img src="assets/page4_img2_820x1236.png" data-cms-src="work.case1.image" alt="Tory Haywood with community" class="w-full h-full object-cover object-top" />
           </div>
 
           <!-- Details -->
@@ -545,48 +553,32 @@
               <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green font-display font-600 text-xs uppercase tracking-wider">Featured</span>
               <span class="px-3 py-1 rounded-full bg-white/5 text-brand-muted font-display font-500 text-xs uppercase tracking-wider">Partnership</span>
             </div>
-            <h3 class="font-display font-800 text-2xl md:text-3xl uppercase tracking-wide mb-3">Humble Estate</h3>
-            <p class="font-body text-brand-muted text-sm md:text-base leading-relaxed mb-6">
+            <h3 class="font-display font-800 text-2xl md:text-3xl uppercase tracking-wide mb-3" data-cms="work.case1.name">Humble Estate</h3>
+            <p class="font-body text-brand-muted text-sm md:text-base leading-relaxed" data-cms="work.case1.description">
               Authentic lifestyle integration showcasing how Humble Estate fits into the journey of self-improvement. Content focused on real daily routines, creating organic connection between brand values and audience aspirations.
             </p>
-
-            <!-- Metrics Row -->
-            <div class="grid grid-cols-3 gap-4">
-              <div class="text-center p-3 rounded-xl bg-white/[0.03]">
-                <p class="font-display font-800 text-xl md:text-2xl text-brand-orange">150K+</p>
-                <p class="font-display text-xs uppercase tracking-wider text-brand-muted mt-1">Reach</p>
-              </div>
-              <div class="text-center p-3 rounded-xl bg-white/[0.03]">
-                <p class="font-display font-800 text-xl md:text-2xl text-brand-orange">8.2%</p>
-                <p class="font-display text-xs uppercase tracking-wider text-brand-muted mt-1">Engagement</p>
-              </div>
-              <div class="text-center p-3 rounded-xl bg-white/[0.03]">
-                <p class="font-display font-800 text-xl md:text-2xl text-brand-orange">3x</p>
-                <p class="font-display text-xs uppercase tracking-wider text-brand-muted mt-1">ROI</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      <!-- Brand Partners Logo Bar -->
+      <!-- Brand Partners Grid -->
       <div class="reveal mt-16">
-        <p class="font-display font-600 text-brand-muted text-sm uppercase tracking-[0.3em] text-center mb-10">Trusted By</p>
-        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
-          <div class="flex items-center justify-center h-10 opacity-70 hover:opacity-100 transition-opacity duration-200">
-            <img src="assets/page3_img3_135x209.png" alt="Humble Estate" class="h-10 w-auto object-contain brightness-0 invert" />
+        <p class="font-display font-600 text-brand-muted text-sm uppercase tracking-[0.3em] text-center mb-10">Brands I've Worked With</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          <div class="flex items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-brand-orange/30 hover:bg-brand-orange/5 transition-all duration-200">
+            <img src="assets/page3_img3_135x209.png" alt="Humble Estate" class="h-12 w-auto object-contain brightness-0 invert" />
           </div>
-          <div class="flex items-center justify-center h-10 opacity-70 hover:opacity-100 transition-opacity duration-200">
-            <img src="assets/page3_img2_309x196.png" alt="C4 Energy" class="h-10 w-auto object-contain brightness-0 invert" />
+          <div class="flex items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-brand-orange/30 hover:bg-brand-orange/5 transition-all duration-200">
+            <img src="assets/page3_img2_309x196.png" alt="C4 Energy" class="h-12 w-auto object-contain brightness-0 invert" />
           </div>
-          <div class="flex items-center justify-center h-10 opacity-70 hover:opacity-100 transition-opacity duration-200">
-            <img src="assets/page3_img1_180x56.png" alt="Luvéra" class="h-8 w-auto object-contain brightness-0 invert" />
+          <div class="flex items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-brand-orange/30 hover:bg-brand-orange/5 transition-all duration-200">
+            <img src="assets/page3_img1_180x56.png" alt="Luvéra" class="h-10 w-auto object-contain brightness-0 invert" />
           </div>
-          <div class="flex items-center justify-center h-10 opacity-70 hover:opacity-100 transition-opacity duration-200">
-            <img src="assets/page3_img4_278x36.png" alt="Prozis" class="h-7 w-auto object-contain brightness-0 invert" />
+          <div class="flex items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-brand-orange/30 hover:bg-brand-orange/5 transition-all duration-200">
+            <img src="assets/page3_img4_278x36.png" alt="Prozis" class="h-8 w-auto object-contain brightness-0 invert" />
           </div>
-          <div class="flex items-center justify-center h-10 opacity-70 hover:opacity-100 transition-opacity duration-200">
-            <img src="assets/page3_img6_338x78.png" alt="Kapvoe" class="h-8 w-auto object-contain brightness-0 invert" />
+          <div class="flex items-center justify-center p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-brand-orange/30 hover:bg-brand-orange/5 transition-all duration-200">
+            <img src="assets/page3_img6_338x78.png" alt="Kapvoe" class="h-10 w-auto object-contain brightness-0 invert" />
           </div>
         </div>
       </div>
@@ -711,7 +703,7 @@
           Get In Touch
         </a>
 
-        <p class="font-body text-brand-muted text-sm mb-8">Tory.l.haywood@gmail.com &bull; (737) 703-4414</p>
+        <p class="font-body text-brand-muted text-sm mb-8" data-cms="contact.email_line">Tory.l.haywood@gmail.com &bull; (737) 703-4414</p>
 
         <!-- Social Links -->
         <div class="flex items-center justify-center gap-4">
@@ -848,18 +840,79 @@
       requestAnimationFrame(animate);
     };
 
-    const statObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          countUp(entry.target);
-          statObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+    function initStatObserver() {
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            countUp(entry.target);
+            statObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
 
-    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
-      statObserver.observe(el);
-    });
+      document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+        statObserver.observe(el);
+      });
+    }
+
+
+    // ---- CSV Content Management System ----
+    // To use Google Sheets: File → Share → Publish to web → select CSV → copy URL
+    // Replace 'content.csv' below with your Google Sheets CSV URL
+    const CMS_URL = 'content.csv';
+
+    function parseCSV(text) {
+      const result = {};
+      const lines = text.trim().split('\n');
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
+        const commaIdx = line.indexOf(',');
+        if (commaIdx === -1) continue;
+        const key = line.slice(0, commaIdx).trim();
+        let value = line.slice(commaIdx + 1).trim();
+        if (value.startsWith('"') && value.endsWith('"')) {
+          value = value.slice(1, -1).replace(/""/g, '"');
+        }
+        result[key] = value;
+      }
+      return result;
+    }
+
+    function applyContent(content) {
+      // Text content
+      document.querySelectorAll('[data-cms]').forEach(el => {
+        const key = el.dataset.cms;
+        if (content[key] !== undefined) el.textContent = content[key];
+      });
+      // Image sources (path/filename only)
+      document.querySelectorAll('[data-cms-src]').forEach(el => {
+        const key = el.dataset.cmsSrc;
+        if (content[key] !== undefined) el.src = content[key];
+      });
+      // Stat counters — update data-target and data-suffix before observer fires
+      document.querySelectorAll('[data-cms-stat]').forEach(el => {
+        const prefix = el.dataset.cmsStat;
+        if (content[prefix + '.value'] !== undefined) {
+          el.dataset.target = content[prefix + '.value'];
+          const hasDecimal = content[prefix + '.value'].includes('.');
+          el.dataset.decimals = hasDecimal ? '1' : '0';
+        }
+        if (content[prefix + '.suffix'] !== undefined) el.dataset.suffix = content[prefix + '.suffix'];
+        el.textContent = '0';
+      });
+    }
+
+    // Load CSV first, then init stat observer so counters use updated values
+    fetch(CMS_URL)
+      .then(r => r.text())
+      .then(text => {
+        applyContent(parseCSV(text));
+        initStatObserver();
+      })
+      .catch(() => {
+        // Fallback: use hardcoded values already in HTML
+        initStatObserver();
+      });
 
 
     // ---- Smooth Scroll for Anchor Links ----
