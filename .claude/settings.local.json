@@ -17,7 +17,12 @@
       "Bash(npx --yes live-server --version)",
       "mcp__Claude_Preview__preview_start",
       "Bash(gh api repos/psychojelly/Torys-Website/pages -X GET)",
-      "Bash(where gh)"
+      "Bash(where gh)",
+      "Bash(nslookup torylhaywood.com)",
+      "Bash(curl -sI http://torylhaywood.com)",
+      "Bash(curl -sk https://torylhaywood.com)",
+      "Bash(curl -skL https://torylhaywood.com)",
+      "Bash(curl -skL -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://torylhaywood.com)"
     ]
   }
 }
